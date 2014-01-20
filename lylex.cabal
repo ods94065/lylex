@@ -1,0 +1,32 @@
+name: lylex
+version: 0.1.0.0
+synopsis: An experimental LilyPond lexer.
+-- description:
+license: GPL-3
+license-file: LICENSE
+author: Owen Smith
+maintainer: ods94065@gmail.com
+-- copyright:
+category: Data
+build-type: Simple
+cabal-version: >=1.8
+
+executable lylex
+  build-depends: base ==4.6.*, aeson ==0.7.*, array ==0.4.*, bytestring ==0.10.*,
+    text ==0.11.*, directory ==1.2.*
+  build-tools: alex
+  main-is: Main.hs
+  hs-source-dirs: src
+  other-modules: Music.LilyLexer
+
+library
+  hs-source-dirs: src
+  exposed-modules: Music.LilyLexer
+  build-depends: base ==4.6.*, array ==0.4.*
+  build-tools: alex
+
+test-suite spec
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test
+  main-is: Spec.hs
+  build-depends: base ==4.6.*, hspec ==1.8.*, HUnit ==1.2.*, lylex
